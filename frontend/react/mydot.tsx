@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import Root from "@core/root";
+import store from "store/store";
+
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
-    <h1>This is TS React speaking</h1>,
+    <Root store={store} />,
     document.getElementById("root"),
   );
 });
