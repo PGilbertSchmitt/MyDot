@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "jsx": "react",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "frontend/react",
+    "paths": {
+      "@core/*": [
+        "components/core/*"
+      ]
+    },
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "include": [
+    "frontend/react/*.tsx",
+    "frontend/react/**/*.ts",
+    "frontend/react/**/*.tsx"
+  ]
+}
