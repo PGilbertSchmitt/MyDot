@@ -1,5 +1,3 @@
-import { Dispatch } from "redux";
-
 import { makeAction } from "util/action_type";
 import { ITab, ICurrentTab } from "resources/tab";
 
