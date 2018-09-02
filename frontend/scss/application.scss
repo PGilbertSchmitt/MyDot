@@ -1,0 +1,14 @@
+/*
+ * Stylesheet manifest, compiled by `$ yarn scss` into public/assets/stylesheets/styles.css
+ *= require_tree .
+ *= require_self
+ */
+
+/* Vendor */
+
+/* Base */
+@import "base/_fonts";
+@import "base/_colors";
+@import "base/layout";
+
+/* Components */

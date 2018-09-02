@@ -1,0 +1,17 @@
+body {
+  background-color: $white;
+}
+
+.external-link {
+  cursor: pointer;
+  color: $green;
+  font-family: $sans-bold;
+
+  .fa {
+      color: $navy;
+  }
+}
+
+.external-link:hover {
+  color: $navy;
+}

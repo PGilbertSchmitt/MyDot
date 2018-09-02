@@ -32,6 +32,8 @@
   },
   "scripts": {
     "webpack": "webpack",
-    "start": "electron ."
+    "start": "electron .",
+    "try": "webpack && electron .",
+    "scss": "scss -r sass-globbing frontend/scss/application.scss:dist/styles.css"
   }
 }

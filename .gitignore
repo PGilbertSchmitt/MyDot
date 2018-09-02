@@ -1,5 +1,7 @@
 node_modules/
 .vscode/
+.sass-cache
 
 yarn-error.log
 dist/bundle.js*
+dist/styles.css*
