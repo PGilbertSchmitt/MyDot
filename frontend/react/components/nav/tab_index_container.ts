@@ -8,12 +8,10 @@ import { ITab } from "resources/tab";
 
 const mapStateToProps = (state: IRootState): IStateProps => ({
   tabIndex: state.tabIndex,
-  currentTab: state.currentTab,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>): IDispatchProps => ({
   setTab: (tab: ITab) => dispatch(receiveTab(tab)),
-  setCurrentTab: (tab: ITab) => dispatch(receiveCurrentTab(tab)),
 });
 
 export default connect(

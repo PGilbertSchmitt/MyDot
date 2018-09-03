@@ -1,18 +1,15 @@
 import React, { Component } from "react";
 
-import Tab from "@nav/tab";
+import Tab from "@nav/tab_container";
 import { ITab, ITabIndex } from "resources/tab";
-import { State as CurrentTabState } from "reducers/current_tab_reducer";
 import { ITabPayload } from "actions/tab_actions";
 
 export interface IStateProps {
   tabIndex: ITabIndex;
-  currentTab: CurrentTabState;
 }
 
 export interface IDispatchProps {
   setTab: (tab: ITab) => ITabPayload;
-  setCurrentTab: (tab: ITab) => ITabPayload;
 }
 
 type IProps = IStateProps & IDispatchProps;
@@ -30,8 +27,8 @@ class TabIndex extends Component<IProps> {
           <div className="horizontal-cross-bar" />
         </div>
         <div className="tab-index">
-          <Tab title="First" />
-          <Tab title="Second" />
+          <Tab title="First" id={1} />
+          <Tab title="Second" id={2} />
         </div>
       </div>
     );
