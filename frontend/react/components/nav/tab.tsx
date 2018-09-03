@@ -28,11 +28,29 @@ class Tab extends Component<IProps, IState> {
     this.state = {
       isActive: props.id === props.currentTab.id,
     };
+    this.clickHandler = this.clickHandler.bind(this);
+  }
+
+  public clickHandler() {
+    this.props.setCurrentTab({
+      id: this.props.id,
+      title: this.props.title,
+    });
+  }
+
+  public shouldComponentUpdate(nextProps: IProps, nextState: IState) {
+    return this.state.isActive !== (this.props.id === nextProps.currentTab.id);
+  }
+
+  public componentWillReceiveProps(nextProps: IProps) {
+    this.setState({
+      isActive: this.props.id === nextProps.currentTab.id,
+    });
   }
 
   public render() {
     return (
-      <div className="tab">
+      <div className={`tab ${this.state.isActive ? "active-tab" : ""}`} onClick={this.clickHandler}>
         <p className="tab-title">{this.props.title}</p>
       </div>
     );

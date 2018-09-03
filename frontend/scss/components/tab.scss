@@ -21,6 +21,10 @@
       border-right: 1px solid black;
       margin: 0;
     }
+
+    .tab.active-tab {
+      background-color: $white;
+    }
   }
 
   .add-tab {

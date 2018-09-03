@@ -29,6 +29,8 @@ class TabIndex extends Component<IProps> {
         <div className="tab-index">
           <Tab title="First" id={1} />
           <Tab title="Second" id={2} />
+          <Tab title="Third" id={3} />
+          <Tab title="Fourth" id={4} />
         </div>
       </div>
     );
