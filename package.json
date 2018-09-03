@@ -33,7 +33,7 @@
   "scripts": {
     "webpack": "webpack",
     "start": "electron .",
-    "try": "webpack && electron .",
+    "try": "yarn scss && webpack && electron .",
     "scss": "scss -r sass-globbing frontend/scss/application.scss:dist/styles.css"
   }
 }
