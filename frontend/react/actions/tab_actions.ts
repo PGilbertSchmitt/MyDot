@@ -10,6 +10,10 @@ export interface ITabPayload {
   payload: { tab: ITab };
 }
 
+export interface IIdPayload {
+  payload: { id: number };
+}
+
 // Action creators
 
 export const receiveCurrentTab = makeAction(RECEIVE_CURRENT_TAB)((tab: ICurrentTab) => ({
@@ -20,8 +24,8 @@ export const receiveTab = makeAction(RECEIVE_TAB)((tab: ITab) => ({
   payload: { tab },
 }));
 
-export const removeTab = makeAction(REMOVE_TAB)((tab: ITab) => ({
-  payload: { tab },
+export const removeTab = makeAction(REMOVE_TAB)((id: number) => ({
+  payload: { id },
 }));
 
 export const incrementTabNum = makeAction(INCREMENT_TAB_NUM)(() => ({

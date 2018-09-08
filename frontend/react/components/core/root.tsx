@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { Store } from "redux";
 
 import { IRootState } from "reducers/_root_reducer";
+import TabIndex from "@nav/tab_index_container";
 
 interface IRootProps extends Props<any> {
   store: Store<IRootState>;
@@ -10,7 +11,7 @@ interface IRootProps extends Props<any> {
 
 const Root: React.SFC<IRootProps> = ({ store }) => (
   <Provider store={store}>
-    <h1>React root!</h1>
+    <TabIndex />
   </Provider>
 );
 

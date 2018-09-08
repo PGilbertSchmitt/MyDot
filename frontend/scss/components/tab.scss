@@ -5,21 +5,85 @@
   justify-content: space-between;
   border-bottom: 1px solid black;
   
+  ::-webkit-scrollbar {
+    height: 0px;
+    width: 0px;
+    display: none;
+    direction: rtl;
+  }
+
   .tab-index {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    overflow: scroll;
     height: 40px;
     width: calc(100% - 40px);
     
     .tab {
+      position: relative;
       box-sizing: border-box;
       display: block;
-      width: 100px;
+      width: 200px;
       height: 100%;
       background-color: $grey;
       border-right: 1px solid black;
       margin: 0;
+      min-width: 70px;
+      cursor: default;
+
+      .tab-title {
+        display: inline-block;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: left;
+        padding: 12px;
+        padding-left: 20px;
+        padding-right: 40px;
+        text-overflow: ellipsis;
+        font-size: 100%;
+        font-family: $sans-bold;
+        user-select: none;
+      }
+
+      .close-button {
+        position: absolute;
+        box-sizing: border-box;
+        right: 10px;
+        top: 10px;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        width:20px;
+        height:20px;
+
+        .bar {
+          position: absolute;
+          top: 2px;
+          left: 9px;
+          width: 0;
+          height: 14px;
+          border: 1px solid $blue;
+          background-color: $blue;
+        }
+
+        .bar-1 {
+          transform: (rotate(45deg));
+        }
+        
+        .bar-2 {
+          transform: (rotate(-45deg));
+        }
+      }
+
+      .close-button:hover {
+        -webkit-transition-duration: 0.5s;
+        transition-duration: 0.5s;
+        transition: all .3s ease-out;
+        transform: rotate(90deg);
+      }
     }
 
     .tab.active-tab {

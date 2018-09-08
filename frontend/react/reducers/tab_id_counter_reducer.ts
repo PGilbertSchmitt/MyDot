@@ -5,7 +5,8 @@ import { incrementTabNum } from "actions/tab_actions";
 
 export type State = number;
 
-const TabIdCounterReducer = (state: State = 0, action: Action) => {
+// Set default to 1 later, using 5 for testing
+const TabIdCounterReducer = (state: State = 5, action: Action) => {
   if (isAction(action, incrementTabNum)) {
     return state + 1;
   }

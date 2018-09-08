@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, MouseEvent } from "react";
 
+import CloseButton from "@nav/close_button";
 import { ITab, ICurrentTab } from "resources/tab";
-import { ITabPayload } from "actions/tab_actions";
+import { ITabPayload, IIdPayload } from "actions/tab_actions";
 
 export interface IOwnProps {
   id: number;
@@ -14,44 +15,50 @@ export interface IStateProps {
 
 export interface IDispatchProps {
   setCurrentTab: (tab: ITab) => ITabPayload;
+  deleteTab: (id: number) => IIdPayload;
 }
 
 type IProps = IOwnProps & IStateProps & IDispatchProps;
 
-interface IState {
-  isActive: boolean;
-}
-
-class Tab extends Component<IProps, IState> {
+class Tab extends Component<IProps> {
   constructor(props: IProps) {
     super(props);
-    this.state = {
-      isActive: props.id === props.currentTab.id,
-    };
-    this.clickHandler = this.clickHandler.bind(this);
   }
 
-  public clickHandler() {
+  public clickHandler = () => {
     this.props.setCurrentTab({
       id: this.props.id,
       title: this.props.title,
     });
   }
 
-  public shouldComponentUpdate(nextProps: IProps, nextState: IState) {
-    return this.state.isActive !== (this.props.id === nextProps.currentTab.id);
+  public closeSelf = (e: MouseEvent) => {
+    e.stopPropagation();
+    this.props.deleteTab(this.props.id);
   }
 
-  public componentWillReceiveProps(nextProps: IProps) {
+  // Unless we get real bogged down, no need. However, if tab rendering a huge pain,
+  // should update only if activeness changes OR the number of tabs changes
+  // public shouldComponentUpdate = (nextProps: IProps, nextState: IState) => {
+  // }
+
+  public componentWillReceiveProps = (nextProps: IProps) => {
     this.setState({
       isActive: this.props.id === nextProps.currentTab.id,
     });
   }
 
+  private classNames = () => (
+    `tab ${this.isActive() ? "active-tab" : ""}`
+  )
+
+  private isActive = () => (this.props.currentTab.id === this.props.id)
+
   public render() {
     return (
-      <div className={`tab ${this.state.isActive ? "active-tab" : ""}`} onClick={this.clickHandler}>
+      <div className={this.classNames()} onClick={this.clickHandler}>
         <p className="tab-title">{this.props.title}</p>
+        <CloseButton closeAction={this.closeSelf} />
       </div>
     );
   }
