@@ -52,7 +52,7 @@ class Tab extends Component<IProps> {
     `tab ${this.isActive() ? "active-tab" : ""}`
   )
 
-  private isActive = () => (this.props.currentTab.id === this.props.id)
+  private isActive = () => (this.props.currentTab.id === this.props.id);
 
   public render() {
     return (

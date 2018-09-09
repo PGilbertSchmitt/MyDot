@@ -43,7 +43,6 @@ class TabIndex extends Component<IProps> {
   }
 
   public render() {
-    console.log("Rendering");
     return (
       <div className="tab-bar">
         <div className="add-tab" onClick={this.addTab}>
