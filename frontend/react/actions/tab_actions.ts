@@ -6,14 +6,6 @@ export const RECEIVE_TAB = "RECEIVE_TAB";
 export const REMOVE_TAB = "REMOVE_TAB";
 export const INCREMENT_TAB_NUM = "INCREMENT_TAB_NUM";
 
-export interface ITabPayload {
-  payload: { tab: ITab };
-}
-
-export interface IIdPayload {
-  payload: { id: number };
-}
-
 // Action creators
 
 export const receiveCurrentTab = makeAction(RECEIVE_CURRENT_TAB)((tab: ICurrentTab) => ({

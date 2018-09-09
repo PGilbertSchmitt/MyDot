@@ -11,8 +11,8 @@ const mapStateToProps = (state: IRootState, ownProps: IOwnProps): IStateProps =>
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>): IDispatchProps => ({
-  setCurrentTab: (tab: ICurrentTab) => dispatch(receiveCurrentTab(tab)),
-  deleteTab: (id: number) => dispatch(removeTab(id)),
+  setCurrentTab: (tab: ICurrentTab) => { dispatch(receiveCurrentTab(tab)); },
+  deleteTab: (id: number) => { dispatch(removeTab(id)); },
 });
 
 export default connect(

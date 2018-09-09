@@ -2,7 +2,6 @@ import React, { Component, MouseEvent } from "react";
 
 import CloseButton from "@nav/close_button";
 import { ITab, ICurrentTab } from "resources/tab";
-import { ITabPayload, IIdPayload } from "actions/tab_actions";
 
 export interface IOwnProps {
   id: number;
@@ -14,8 +13,8 @@ export interface IStateProps {
 }
 
 export interface IDispatchProps {
-  setCurrentTab: (tab: ITab) => ITabPayload;
-  deleteTab: (id: number) => IIdPayload;
+  setCurrentTab: (tab: ITab) => void;
+  deleteTab: (id: number) => void;
 }
 
 type IProps = IOwnProps & IStateProps & IDispatchProps;
