@@ -34,6 +34,7 @@
     "webpack": "webpack",
     "start": "electron .",
     "try": "yarn scss && webpack && electron .",
-    "scss": "scss -r sass-globbing frontend/scss/application.scss:dist/styles.css"
+    "scss": "scss -r sass-globbing frontend/scss/application.scss:dist/styles.css",
+    "lint": "tslint -c tslint.json frontend/react/**/*.ts frontend/react/**/*.tsx"
   }
 }
