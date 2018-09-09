@@ -15,7 +15,8 @@ const mapStateToProps = (state: IRootState): IStateProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>): IDispatchProps => ({
-  // I'm wondering if this is an inefficient way of handling multiple concurrent, independent actions
+  // I'm wondering if this is an inefficient way of handling multiple concurrent, independent actions. Eventually, I
+  // can have both reducers involved just respond to the same action
   addTab: (tab: ITab) => {
     const defaultWindowType: IWindow = {
       id: tab.id,
