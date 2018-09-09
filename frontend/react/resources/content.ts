@@ -11,6 +11,7 @@ export interface ISubwindowContent {
 export interface IFullWindowContent {
   id: number;
   type: ContentTypes.FULL_WINDOW;
+  data: string;
 }
 
 export type IWindow =

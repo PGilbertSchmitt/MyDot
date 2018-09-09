@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import Tab from "@nav/tab_container";
 import { ITab, ITabIndex } from "resources/tab";
-import { ITabPayload } from "actions/tab_actions";
 
 export interface IStateProps {
   tabIndex: ITabIndex;
@@ -10,7 +9,7 @@ export interface IStateProps {
 }
 
 export interface IDispatchProps {
-  addTab: (tab: ITab) => ITabPayload;
+  addTab: (tab: ITab) => void;
   bumpTabNum: () => void;
 }
 
@@ -23,6 +22,8 @@ class TabIndex extends Component<IProps> {
     this.addTab = this.addTab.bind(this);
   }
 
+  // Besides adding a new tab, also adds a new content object in the object state tied to that tab
+  // I feel like there might be a better way to handle this, but this method is simple.
   public addTab() {
     const currentTabNum = this.props.currentTabNumber;
     this.props.addTab({
