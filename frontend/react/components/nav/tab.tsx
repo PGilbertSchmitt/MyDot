@@ -1,7 +1,9 @@
 import React, { Component, MouseEvent } from "react";
+import findIndex from "lodash/findIndex";
 
 import CloseButton from "@nav/close_button";
-import { ITab, ICurrentTab } from "resources/tab";
+import { ITab, ICurrentTab, ITabIndex } from "resources/tab";
+import { defaultState } from "reducers/current_tab_reducer";
 
 export interface IOwnProps {
   id: number;
@@ -10,6 +12,7 @@ export interface IOwnProps {
 
 export interface IStateProps {
   currentTab: ICurrentTab;
+  tabIndex: ITabIndex;
 }
 
 export interface IDispatchProps {
@@ -25,14 +28,22 @@ class Tab extends Component<IProps> {
   }
 
   public clickHandler = () => {
-    this.props.setCurrentTab({
-      id: this.props.id,
-      title: this.props.title,
-    });
+    this.props.setCurrentTab(this.toTab());
   }
 
   public closeSelf = (e: MouseEvent) => {
     e.stopPropagation();
+    // If active, gotta set the active tab to the one before it (or next if it's the first)
+    // Gotta do this before trying to remove the tab just in case
+    if (this.isActive()) {
+      if (this.props.tabIndex.length === 1) {
+        this.setCurrentTabToEmpty();
+      } else {
+        // Since a tabIndex length of 0 is impossible (since this tab currently exists),
+        // the length can only be 2 or greater
+        this.setNextTab();
+      }
+    }
     this.props.deleteTab(this.props.id);
   }
 
@@ -52,6 +63,24 @@ class Tab extends Component<IProps> {
   )
 
   private isActive = () => (this.props.currentTab.id === this.props.id);
+
+  private toTab = () => ({
+    id: this.props.id,
+    title: this.props.title,
+  })
+
+  private setCurrentTabToEmpty = () => {
+    this.props.setCurrentTab(defaultState);
+  }
+
+  private setNextTab = () => {
+    const { tabIndex } = this.props;
+    let newCurrentTab: ITab;
+    const loc = findIndex(tabIndex, (tab: ITab) => (this.props.id === tab.id));
+    const newLoc = loc === 0 ? loc + 1 : loc - 1;
+    newCurrentTab = tabIndex[newLoc];
+    this.props.setCurrentTab(newCurrentTab);
+  }
 
   public render() {
     return (

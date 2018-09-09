@@ -9,6 +9,7 @@ import { ICurrentTab } from "resources/tab";
 
 const mapStateToProps = (state: IRootState, ownProps: IOwnProps): IStateProps => ({
   currentTab: state.currentTab,
+  tabIndex: state.tabIndex,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>): IDispatchProps => ({

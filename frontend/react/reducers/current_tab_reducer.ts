@@ -7,7 +7,7 @@ import { receiveCurrentTab } from "actions/tab_actions";
 export type State = ICurrentTab;
 
 // A non-rendered tab
-const defaultState: State = {
+export const defaultState: State = {
   id: 0,
   title: "unknown",
 };
